@@ -1,0 +1,54 @@
+<div class="p-8 mt-4">
+    <div class="shadow p-6">
+        <h4>Ürün Ekleme Formu</h4>
+        <form [formGroup]="bookForm" (ngSubmit)="save()">
+            <div class="w-full flex flex-wrap">
+                <mat-form-field class="w-full">
+                    <mat-label>ISBN</mat-label>
+                    <input type="text" matInput placeholder="" formControlName="isbn">
+                </mat-form-field> 
+            </div>
+            <div class="w-full flex flex-wrap">
+                <mat-form-field class="w-full">
+                    <mat-label>Başlık</mat-label>
+                    <input type="text" matInput placeholder="" formControlName="bookTitle">
+                </mat-form-field> 
+            </div>
+            <div class="w-full flex flex-wrap">
+                <mat-form-field class="w-full">
+                    <mat-label>Durum</mat-label>
+                    <input type="number" matInput placeholder="" formControlName="status">
+                </mat-form-field> 
+            </div>
+            <div class="w-full flex flex-wrap">
+                <mat-form-field class="w-full">
+                    <mat-label>Sayfa Sayısı</mat-label>
+                    <input type="number" matInput placeholder="" formControlName="numberOfPages">
+                </mat-form-field> 
+            </div>
+            <div class="w-full flex flex-wrap">
+                <mat-form-field class="w-full">
+                    <mat-label>YazarID</mat-label>
+                    <input type="text" matInput placeholder="" formControlName="authorId">
+                </mat-form-field> 
+            </div>
+            <div class="w-full flex flex-wrap">
+                <mat-form-field class="w-full">
+                    <mat-label>YayıncıID</mat-label>
+                    <input type="text" matInput placeholder="" formControlName="publisherId">
+                </mat-form-field> 
+            </div>
+            <div class="w-full flex flex-wrap">
+                <mat-form-field class="w-full">
+                    <mat-label>ÜyeID</mat-label>
+                    <input type="text" matInput placeholder="" formControlName="memberId">
+                </mat-form-field> 
+            </div>
+            <div class="flex justify-center">
+                <button mat-raised-button color="primary" [disabled]="!bookForm.valid">Kaydet</button>
+            </div>
+        </form>
+    </div>
+    
+</div>
+
