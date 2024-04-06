@@ -12,5 +12,5 @@ import {MatIconModule} from '@angular/material/icon';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'crud-angular';
+  title = 'library';
 }

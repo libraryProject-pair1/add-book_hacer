@@ -1,7 +1,17 @@
 <div class="p-8 mt-4">
     <div class="shadow p-6">
-        <h4>Ürün Ekleme Formu</h4>
+        @if(isEdit){
+            <h4>Kitap Detayları</h4>
+        }@else{
+            <h4>Ürün Ekleme Formu</h4>
+        }
         <form [formGroup]="bookForm" (ngSubmit)="save()">
+            <div class="w-full flex flex-wrap">
+                <mat-form-field class="w-full">
+                    <mat-label>Id</mat-label>
+                    <input type="text" matInput placeholder="" formControlName="id">
+                </mat-form-field> 
+            </div>
             <div class="w-full flex flex-wrap">
                 <mat-form-field class="w-full">
                     <mat-label>ISBN</mat-label>
@@ -45,7 +55,12 @@
                 </mat-form-field> 
             </div>
             <div class="flex justify-center">
-                <button mat-raised-button color="primary" [disabled]="!bookForm.valid">Kaydet</button>
+                @if(isEdit){
+                    <button mat-raised-button color="primary" [disabled]="!bookForm.valid">Düzenle</button>
+                }@else {
+                    <button mat-raised-button color="primary" [disabled]="!bookForm.valid">Kaydet</button>
+                }
+                
             </div>
         </form>
     </div>

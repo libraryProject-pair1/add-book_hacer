@@ -4,8 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { HttpService } from '../../http.service';
 import { IAddBookFormResponse } from '../../interfaces/addBookFormResponse';
-
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { UpdatedBookResponse } from '../../interfaces/updatedBookResponse';
 
 @Component({
   selector: 'app-book-form',
@@ -17,8 +17,11 @@ import { IAddBookFormResponse } from '../../interfaces/addBookFormResponse';
 export class BookFormComponent {
 formBuilder=inject(FormBuilder);
 httpService =inject(HttpService);
+router=inject(Router);
+route=inject(ActivatedRoute);
+
 bookForm =this.formBuilder.group({
-  
+  id:['',[Validators.required]],
   isbn:['',[Validators.required]],
   numberOfPages:[0,[Validators.required]],
   bookTitle:['',[Validators.required]],
@@ -27,11 +30,24 @@ bookForm =this.formBuilder.group({
   authorId:['',[Validators.required]],
   publisherId:['',[Validators.required]],
 });
+bookId!:string;
+isEdit=false;
+ngOnInit(){
+  this.bookId = this.route.snapshot.params['id'];
+  if(this.bookId){
+    this.isEdit=true;
+    this.httpService.getBook(this.bookId).subscribe(result=>{
+      console.log(result);
+      this.bookForm.patchValue(result);
+      
+    })
+  }
+}
 
 save(){
   console.log(this.bookForm.value);
-  const book:IAddBookFormResponse={
-   
+  const book:UpdatedBookResponse={
+    id: this.bookForm.value.id!,
     isbn: this.bookForm.value.isbn!,
     numberOfPages:this.bookForm.value.numberOfPages!,
     bookTitle: this.bookForm.value.bookTitle!,
@@ -39,9 +55,18 @@ save(){
     authorId:this.bookForm.value.authorId!,
     publisherId:this.bookForm.value.publisherId!,
     memberId:this.bookForm.value.memberId!
-  }
+  };
+ 
+  if(this.isEdit){
+    this.httpService.updatebook(this.bookId,book).subscribe(()=>{
+    console.log('success');
+    this.router.navigateByUrl("/book-list");
+  });
+}else{
   this.httpService.createBook(book).subscribe(()=>{
-    console.log("success");
-  })
+  console.log('success');
+  this.router.navigateByUrl("/book-list");
+ });
+}
 }
 }

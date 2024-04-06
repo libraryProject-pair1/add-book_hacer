@@ -1,6 +1,6 @@
 export interface IAddBookFormResponse
 {
-  
+  id?:string,
   isbn: string,
   numberOfPages: number,
   bookTitle: string,
