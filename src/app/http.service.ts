@@ -23,9 +23,11 @@ export class HttpService {
   getBook(bookId:string){
     return this.http.get<IAddBookFormResponse>(this.apiUrl+'/api/Books/'+bookId);
   }
-  updatebook(bookId:string, book:UpdatedBookResponse) {
-    return this.http.put<UpdatedBookResponse>(this.apiUrl + '/api/Books/'+bookId,book);
+  updatebook( book:UpdatedBookResponse) {
+    return this.http.put<UpdatedBookResponse>(this.apiUrl + '/api/Books/',book);
     
   }
+  deletebook( bookId:string) {
+    return this.http.delete<UpdatedBookResponse>(this.apiUrl + '/api/Books/'+bookId);
 }
-
+}
