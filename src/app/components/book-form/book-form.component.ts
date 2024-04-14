@@ -6,7 +6,7 @@ import { HttpService } from '../../http.service';
 import { IAddBookFormResponse } from '../../interfaces/addBookFormResponse';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UpdatedBookResponse } from '../../interfaces/updatedBookResponse';
-
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-book-form',
   standalone: true,
@@ -19,6 +19,7 @@ formBuilder=inject(FormBuilder);
 httpService =inject(HttpService);
 router=inject(Router);
 route=inject(ActivatedRoute);
+toastr=inject(ToastrService);
 
 bookForm =this.formBuilder.group({
   id:['',[Validators.required]],
@@ -60,11 +61,13 @@ save(){
   if(this.isEdit){
     this.httpService.updatebook(this.bookId,book).subscribe(()=>{
     console.log('success');
+    this.toastr.success("Ürün başarıyla kaydedildi.");
     this.router.navigateByUrl("/book-list");
   });
 }else{
   this.httpService.createBook(book).subscribe(()=>{
   console.log('success');
+  this.toastr.success("Ürün başarıyla eklendi.");
   this.router.navigateByUrl("/book-list");
  });
 }
