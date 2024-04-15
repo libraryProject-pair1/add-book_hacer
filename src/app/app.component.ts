@@ -9,6 +9,7 @@ import { CardsComponent } from './components/HomePage/cards/cards.component';
 import { BannerComponent } from './components/HomePage/banner/banner.component';
 import { NavBarComponent } from './components/HomePage/nav-bar/nav-bar.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
