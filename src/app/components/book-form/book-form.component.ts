@@ -4,13 +4,13 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { HttpService } from '../../http.service';
 import { IAddBookFormResponse } from '../../interfaces/addBookFormResponse';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { UpdatedBookResponse } from '../../interfaces/updatedBookResponse';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-book-form',
   standalone: true,
-  imports: [MatInputModule,MatButtonModule,FormsModule,ReactiveFormsModule],
+  imports: [MatInputModule,MatButtonModule,FormsModule,ReactiveFormsModule,RouterOutlet],
   templateUrl: './book-form.component.html',
   styleUrl: './book-form.component.css',
 })

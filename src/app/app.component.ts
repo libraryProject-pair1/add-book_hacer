@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
@@ -8,6 +8,9 @@ import { HomePageSearchComponent } from './components/HomePage/home-page-search/
 import { CardsComponent } from './components/HomePage/cards/cards.component';
 import { BannerComponent } from './components/HomePage/banner/banner.component';
 import { NavBarComponent } from './components/HomePage/nav-bar/nav-bar.component';
+import { IletisimComponent } from './components/iletisim/iletisim.component';
+
+
 
 
 @Component({
@@ -15,13 +18,14 @@ import { NavBarComponent } from './components/HomePage/nav-bar/nav-bar.component
   standalone: true,
   imports: [RouterOutlet,CommonModule,MatToolbarModule,MatIconModule,RouterLink,FooterComponent,
     HomePageSearchComponent,CardsComponent,
-    BannerComponent,HomePageSearchComponent,
-    NavBarComponent
+    BannerComponent,HomePageSearchComponent,AppComponent,
+    NavBarComponent,IletisimComponent,RouterLinkActive
   ],
+  
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'library';
-  image='assets/images/library_image.jpg';
+  
 }

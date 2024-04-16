@@ -1,13 +1,15 @@
 import { Routes } from '@angular/router';
 import { BookListComponent } from './components/book-list/book-list.component';
 import { BookFormComponent } from './components/book-form/book-form.component';
+import { IletisimComponent } from './components/iletisim/iletisim.component';
+import { NavBarComponent } from './components/HomePage/nav-bar/nav-bar.component';
 import { HomePageSearchComponent } from './components/HomePage/home-page-search/home-page-search.component';
-import { AppComponent } from './app.component';
+
 
 export const routes: Routes = [
     {
-        path:"",
-        component:AppComponent
+        path:"homepage",
+        component:HomePageSearchComponent
     },
     {
         path:"book-list",
@@ -21,4 +23,14 @@ export const routes: Routes = [
         path:"book/:id",
         component:BookFormComponent
     },
+    {
+        path:"iletisim",
+        component:IletisimComponent
+    },
+    {path: '', redirectTo: 'homepage', pathMatch: 'full'},
+    {
+        path:"nav-bar",
+        component:NavBarComponent
+    }
 ];
+

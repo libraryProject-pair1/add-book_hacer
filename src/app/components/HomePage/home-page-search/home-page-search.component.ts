@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-
+import { RouterModule } from '@angular/router';
 @Component({
-  selector: 'app-home-page-search',
+  selector: 'home-page-search',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './home-page-search.component.html',
   styleUrl: './home-page-search.component.css'
 })
